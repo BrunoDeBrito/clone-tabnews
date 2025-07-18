@@ -1,8 +1,4 @@
 {
   "cSpell.language": "en,pt,pt-BR",
-  "cSpell.words": [
-    "datname",
-    "postgres",
-    "tabnews"
-  ]
+  "cSpell.words": ["datname", "pgmigrations", "postgres", "tabnews"]
 }
