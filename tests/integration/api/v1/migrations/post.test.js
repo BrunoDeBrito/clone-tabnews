@@ -1,9 +1,9 @@
-import database from "infra/database.js";
+import db from "infra/database.js";
 
 beforeAll(cleanDatabase);
 
 async function cleanDatabase() {
-  await database.query("drop schema public cascade; create schema public;");
+  await db.query("drop schema public cascade; create schema public;");
 }
 
 test("POST to /api/v1/migrations should return 200", async () => {
