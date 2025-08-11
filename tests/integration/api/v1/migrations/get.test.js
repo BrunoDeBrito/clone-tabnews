@@ -1,13 +1,15 @@
 import db from "infra/database.js";
+import orchestrator from "tests/orchestrator";
 
-beforeAll(cleanDatabase);
-
-async function cleanDatabase() {
+beforeAll(async () => {
+  await orchestrator.waitForAllServices();
   await db.query("drop schema public cascade; create schema public;");
-}
+});
 
 test("GET to /api/v1/migrations should return 200", async () => {
-  const response = await fetch("http://localhost:3000/api/v1/migrations");
+  const url = `${process.env.BASE_URL}/${process.env.VERSION_V1}`;
+
+  const response = await fetch(`${url}/migrations`);
   expect(response.status).toBe(200);
 
   const responseBody = await response.json();
