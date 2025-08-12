@@ -14,7 +14,12 @@ async function waitForAllServices() {
 
     async function fetchStatusPage() {
       const response = await fetch(`${url}/status`);
-      const responseBody = response.json();
+
+      if (!response.ok) {
+        throw new Error(`HTTP error ${response.status}`);
+      }
+
+      response.json();
     }
   }
 }
