@@ -1,16 +1,18 @@
 name: Automatic Test
-on: [pull_request]
+
+on: pull_request
+
 jobs:
-  test:
+  jest:
+    name: Jest Ubuntu
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      -uses: actions/checkout@v4
+
+      -uses: actions/setup-node@v4
         with:
-          node-version: "14"
-      - name: Install dependencies
-        run: npm install
-      - name: Run tests
-        run: npm test
+          node-version: "lts/hydrogen"
+
+      -run: npm ci
+
+      -run: npm test
