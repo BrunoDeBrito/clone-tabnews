@@ -39,22 +39,21 @@ function DatabaseStatus() {
   if (!isLoading && data) {
     databaseStatusInformation = (
       <>
-        <div>Versão: { data.dependencies.database.version }</div>
+        <div>Versão: {data.dependencies.database.version}</div>
         <div>
-          Conexões abertas: { data.dependencies.database.opened_connections }
+          Conexões abertas: {data.dependencies.database.opened_connections}
         </div>
         <div>
-          Conexões máximas: { data.dependencies.database.max_connections }
+          Conexões máximas: {data.dependencies.database.max_connections}
         </div>
       </>
-    )
+    );
   }
 
   return (
     <>
       <h2>Status do Banco de Dados</h2>
-      <div>{ databaseStatusInformation }</div>
+      <div>{databaseStatusInformation}</div>
     </>
-  )
-
+  );
 }
