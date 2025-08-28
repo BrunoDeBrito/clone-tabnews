@@ -1,21 +1,20 @@
-import db from "infra/database.js";
-import orchestrator from "tests/orchestrator";
+import orchestrator from "tests/orchestrator.js";
 
 beforeAll(async () => {
   await orchestrator.waitForAllServices();
-  await db.query("drop schema public cascade; create schema public;");
+  await orchestrator.clearDatabase();
 });
 
 describe("POST /api/v1/migrations", () => {
-  describe("Retrieving pending migrations", () => {
-    describe("Anonymous user", () => {
+  describe("Anonymous user", () => {
+    describe("Running pending migrations", () => {
       test("For the first time", async () => {
-        const url = `${process.env.BASE_URL}/${process.env.VERSION_V1}`;
-
-        const response1 = await fetch(`${url}/migrations`, {
-          method: "POST",
-        });
-
+        const response1 = await fetch(
+          "http://localhost:3000/api/v1/migrations",
+          {
+            method: "POST",
+          },
+        );
         expect(response1.status).toBe(201);
 
         const response1Body = await response1.json();
@@ -24,11 +23,12 @@ describe("POST /api/v1/migrations", () => {
         expect(response1Body.length).toBeGreaterThan(0);
       });
       test("For the second time", async () => {
-        const url = `${process.env.BASE_URL}/${process.env.VERSION_V1}`;
-
-        const response2 = await fetch(`${url}/migrations`, {
-          method: "POST",
-        });
+        const response2 = await fetch(
+          "http://localhost:3000/api/v1/migrations",
+          {
+            method: "POST",
+          },
+        );
         expect(response2.status).toBe(200);
 
         const response2Body = await response2.json();

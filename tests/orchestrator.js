@@ -1,7 +1,5 @@
 import retry from "async-retry";
-import db from "infra/database";
-
-const url = `${process.env.BASE_URL}/${process.env.VERSION_V1}`;
+import db from "infra/database.js";
 
 async function waitForAllServices() {
   await waitForWebServer();
@@ -9,18 +7,15 @@ async function waitForAllServices() {
   async function waitForWebServer() {
     return retry(fetchStatusPage, {
       retries: 100,
-      minTimeout: 500,
       maxTimeout: 1000,
     });
 
     async function fetchStatusPage() {
-      const response = await fetch(`${url}/status`);
+      const response = await fetch("http://localhost:3000/api/v1/status");
 
-      if (!response.ok) {
-        throw new Error(`HTTP error ${response.status}`);
+      if (response.status !== 200) {
+        throw Error();
       }
-
-      response.json();
     }
   }
 }
@@ -29,6 +24,9 @@ async function clearDatabase() {
   await db.query("drop schema public cascade; create schema public;");
 }
 
-const orchestrator = { waitForAllServices, clearDatabase };
+const orchestrator = {
+  waitForAllServices,
+  clearDatabase,
+};
 
 export default orchestrator;
