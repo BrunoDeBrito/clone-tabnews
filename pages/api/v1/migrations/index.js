@@ -1,37 +1,52 @@
+import { createRouter } from "next-connect";
 import migrationRunner from "node-pg-migrate";
 import { resolve } from "node:path";
 import db from "infra/database.js";
+import controller from "infra/controller";
 
-export default async function migrations(req, res) {
-  const allowedMethods = ["GET", "POST"];
-  if (!allowedMethods.includes(req.method)) {
-    return res.status(405).json({
-      error: `Method "${req.method}" not allowed`,
-    });
-  }
+const router = createRouter();
 
+router.get(getHandler);
+router.post(postHandler);
+
+export default router.handler(controller.errorHandlers);
+
+const defaultMigrationOptions = {
+  dryRun: true,
+  dir: resolve("infra", "migrations"),
+  direction: "up",
+  verbose: true,
+  migrationsTable: "pgmigrations",
+};
+
+async function getHandler(req, res) {
   let dbClient;
 
   try {
     dbClient = await db.getNewClient();
 
-    const defaultMigrationOptions = {
-      dbClient: dbClient,
-      dryRun: true,
-      dir: resolve("infra", "migrations"),
-      direction: "up",
-      verbose: true,
-      migrationsTable: "pgmigrations",
-    };
-
     if (req.method === "GET") {
-      const pendingMigrations = await migrationRunner(defaultMigrationOptions);
+      const pendingMigrations = await migrationRunner({
+        ...defaultMigrationOptions,
+        dbClient,
+      });
       return res.status(200).json(pendingMigrations);
     }
+  } finally {
+    await dbClient.end();
+  }
+}
+
+async function postHandler(req, res) {
+  let dbClient;
+
+  try {
+    dbClient = await db.getNewClient();
 
     if (req.method === "POST") {
       const migratedMigrations = await migrationRunner({
         ...defaultMigrationOptions,
+        dbClient,
         dryRun: false,
       });
 
@@ -41,9 +56,6 @@ export default async function migrations(req, res) {
 
       return res.status(200).json(migratedMigrations);
     }
-  } catch (error) {
-    console.error("🚀 ~ [MIGRATIONS:ERROR]:", error);
-    throw error;
   } finally {
     await dbClient.end();
   }
