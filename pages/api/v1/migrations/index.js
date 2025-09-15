@@ -1,4 +1,4 @@
-import {createRouter} from "next-connect";
+import { createRouter } from "next-connect";
 import controller from "infra/controller";
 import migrator from "models/migrator";
 
