@@ -1,10 +1,10 @@
 export class InternalServerError extends Error {
   constructor({ cause, statusCode }) {
-    super("Um erro interno não esperado aconteceu!", {
+    super("Um erro interno não esperado aconteceu.", {
       cause,
     });
     this.name = "InternalServerError";
-    this.action = "Entre em contato com o suporte 🧑‍🔧";
+    this.action = "Entre em contato com o suporte.";
     this.statusCode = statusCode || 500;
   }
 
@@ -20,11 +20,11 @@ export class InternalServerError extends Error {
 
 export class ServiceError extends Error {
   constructor({ cause, message }) {
-    super(message || "Serviço Indisponível no momento", {
+    super(message || "Serviço indisponível no momento.", {
       cause,
     });
     this.name = "ServiceError";
-    this.action = "Verifique se o serviço está disponível";
+    this.action = "Verifique se o serviço está disponível.";
     this.statusCode = 503;
   }
 
@@ -39,10 +39,12 @@ export class ServiceError extends Error {
 }
 
 export class ValidationError extends Error {
-  constructor({ message, action }) {
-    super(message || "Um erro em validação aconteceu");
+  constructor({ cause, message, action }) {
+    super(message || "Um erro de validação ocorreu.", {
+      cause,
+    });
     this.name = "ValidationError";
-    this.action = action || "Ajuste os dados enviados e tente novamente";
+    this.action = action || "Ajuste os dados enviados e tente novamente.";
     this.statusCode = 400;
   }
 
@@ -57,11 +59,13 @@ export class ValidationError extends Error {
 }
 
 export class NotFoundError extends Error {
-  constructor({ message, action }) {
-    super(message || "Não foi possível encontrar esse recurso no sistema.");
+  constructor({ cause, message, action }) {
+    super(message || "Não foi possível encontrar este recurso no sistema.", {
+      cause,
+    });
     this.name = "NotFoundError";
     this.action =
-      action || "Verifique se os parÂmetros enviados na consulta é certos.";
+      action || "Verifique se os parâmetros enviados na consulta estão certos.";
     this.statusCode = 404;
   }
 
@@ -80,7 +84,7 @@ export class MethodNotAllowedError extends Error {
     super("Método não permitido para este endpoint.");
     this.name = "MethodNotAllowedError";
     this.action =
-      "Verifique se o método HTTP enviado é valido para este endpoint";
+      "Verifique se o método HTTP enviado é válido para este endpoint.";
     this.statusCode = 405;
   }
 

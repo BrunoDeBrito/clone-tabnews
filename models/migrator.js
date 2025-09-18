@@ -1,6 +1,6 @@
 import migrationRunner from "node-pg-migrate";
 import { resolve } from "node:path";
-import db from "infra/database.js";
+import database from "infra/database.js";
 
 const defaultMigrationOptions = {
   dryRun: true,
@@ -14,7 +14,7 @@ async function listPendingMigrations() {
   let dbClient;
 
   try {
-    dbClient = await db.getNewClient();
+    dbClient = await database.getNewClient();
 
     const pendingMigrations = await migrationRunner({
       ...defaultMigrationOptions,
@@ -30,7 +30,7 @@ async function runPendingMigrations() {
   let dbClient;
 
   try {
-    dbClient = await db.getNewClient();
+    dbClient = await database.getNewClient();
 
     const migratedMigrations = await migrationRunner({
       ...defaultMigrationOptions,
