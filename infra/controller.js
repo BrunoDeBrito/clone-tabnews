@@ -5,24 +5,24 @@ import {
   NotFoundError,
 } from "infra/errors";
 
-function onNoMatchHandler(req, res) {
+function onNoMatchHandler(request, response) {
   const publicErrorObject = new MethodNotAllowedError();
-  res.status(405).json(publicErrorObject);
+  response.status(publicErrorObject.statusCode).json(publicErrorObject);
 }
 
-function onErrorHandler(err, req, res) {
-  if (err instanceof ValidationError || err instanceof NotFoundError) {
-    return res.status(err.statusCode).json(err);
+function onErrorHandler(error, request, response) {
+  if (error instanceof ValidationError || error instanceof NotFoundError) {
+    return response.status(error.statusCode).json(error);
   }
 
   const publicErrorObject = new InternalServerError({
-    statusCode: err.statusCode,
-    cause: err,
+    statusCode: error.statusCode,
+    cause: error,
   });
 
-  console.log("\n Erro dentro do catch do Next-Connect");
   console.error(publicErrorObject);
-  res.status(publicErrorObject.statusCode).json(publicErrorObject);
+
+  response.status(publicErrorObject.statusCode).json(publicErrorObject);
 }
 
 const controller = {
