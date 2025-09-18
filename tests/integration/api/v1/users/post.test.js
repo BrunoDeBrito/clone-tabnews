@@ -1,5 +1,7 @@
 import { version as uuidVersion } from "uuid";
 import orchestrator from "tests/orchestrator";
+import user from "models/user";
+import password from "models/password";
 
 beforeAll(async () => {
   await orchestrator.waitForAllServices();
@@ -30,7 +32,7 @@ describe("POST /api/v1/users", () => {
         id: responseBody.id,
         username: "BrunoDeBrito",
         email: "contato@gmail.com",
-        password: "password",
+        password: responseBody.password,
         created_at: responseBody.created_at,
         updated_at: responseBody.updated_at,
       });
@@ -38,6 +40,21 @@ describe("POST /api/v1/users", () => {
       expect(uuidVersion(responseBody.id)).toBe(4);
       expect(Date.parse(responseBody.created_at)).not.toBeNaN();
       expect(Date.parse(responseBody.updated_at)).not.toBeNaN();
+
+      const userInDatabase = await user.findOneByUserName("BrunoDeBrito");
+      const correctPasswordMatch = await password.compare(
+        "password",
+        userInDatabase.password,
+      );
+
+      expect(correctPasswordMatch).toBe(true);
+
+      const incorrectPasswordMatch = await password.compare(
+        "passWord",
+        userInDatabase.password,
+      );
+
+      expect(incorrectPasswordMatch).toBe(false);
     });
 
     test("With duplicate 'email'", async () => {
@@ -47,7 +64,7 @@ describe("POST /api/v1/users", () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username: "emailduplicado1",
+          username: "email.duplicado1",
           email: "duplicado@gmail.com",
           password: "password",
         }),
@@ -61,7 +78,7 @@ describe("POST /api/v1/users", () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username: "emailduplicado2",
+          username: "email.duplicado2",
           email: "Duplicado@gmail.com",
           password: "password",
         }),
@@ -86,7 +103,7 @@ describe("POST /api/v1/users", () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username: "usernameduplicado",
+          username: "UsernameDuplicado",
           email: "duplicado@username.com",
           password: "password",
         }),
@@ -100,7 +117,7 @@ describe("POST /api/v1/users", () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username: "UsernameDuplicado",
+          username: "usernameDuplicado",
           email: "username@duplicado.com",
           password: "password",
         }),
