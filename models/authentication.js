@@ -8,15 +8,15 @@ async function getAuthenticatedUser(providedEmail, providedPassword) {
     await validatePassword(providedPassword, storedUser.password);
 
     return storedUser;
-  } catch (err) {
-    if (err instanceof UnauthorizedError) {
+  } catch (error) {
+    if (error instanceof UnauthorizedError) {
       throw new UnauthorizedError({
         message: "Dados de autenticação não conferem.",
         action: "Verifique se os dados enviados estão corretos.",
       });
     }
 
-    throw err;
+    throw error;
   }
 
   async function findUserByEmail(providedEmail) {
@@ -27,7 +27,7 @@ async function getAuthenticatedUser(providedEmail, providedPassword) {
     } catch (error) {
       if (error instanceof NotFoundError) {
         throw new UnauthorizedError({
-          message: "E-mail não confere.",
+          message: "Email não confere.",
           action: "Verifique se este dado está correto.",
         });
       }
@@ -43,9 +43,10 @@ async function getAuthenticatedUser(providedEmail, providedPassword) {
       providedPassword,
       storedPassword,
     );
+
     if (!correctPasswordMatch) {
       throw new UnauthorizedError({
-        message: "E-mail não confere.",
+        message: "Senha não confere.",
         action: "Verifique se este dado está correto.",
       });
     }

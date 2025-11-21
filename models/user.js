@@ -3,7 +3,9 @@ import password from "models/password.js";
 import { ValidationError, NotFoundError } from "infra/errors.js";
 
 async function findOneByUsername(username) {
-  return await runSelectQuery(username);
+  const userFound = await runSelectQuery(username);
+
+  return userFound;
 
   async function runSelectQuery(username) {
     const results = await database.query({
@@ -32,7 +34,9 @@ async function findOneByUsername(username) {
 }
 
 async function findOneByEmail(email) {
-  return await runSelectQuery(email);
+  const userFound = await runSelectQuery(email);
+
+  return userFound;
 
   async function runSelectQuery(email) {
     const results = await database.query({
@@ -65,7 +69,8 @@ async function create(userInputValues) {
   await validateUniqueEmail(userInputValues.email);
   await hashPasswordInObject(userInputValues);
 
-  return await runInsertQuery(userInputValues);
+  const newUser = await runInsertQuery(userInputValues);
+  return newUser;
 
   async function runInsertQuery(userInputValues) {
     const results = await database.query({
@@ -183,9 +188,9 @@ async function hashPasswordInObject(userInputValues) {
 
 const user = {
   create,
-  update,
   findOneByUsername,
   findOneByEmail,
+  update,
 };
 
 export default user;
