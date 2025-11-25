@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0fc83e4d-f434-41ef-b2de-36d98083780b" name="Changes" comment="feat: implement session management with token generation and cookie handling" />
+    <list default="true" id="0fc83e4d-f434-41ef-b2de-36d98083780b" name="Changes" comment="feat: implement session management with token generation and cookie handling">
+      <change afterPath="$PROJECT_DIR$/pages/api/v1/user/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/integration/api/v1/user/get.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infra/controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/infra/controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/session.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/session.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/api/v1/sessions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/v1/sessions/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/orchestrator.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/orchestrator.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,7 +46,7 @@
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;session&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;user&quot;,
     &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
     &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/debrito/Project/Course/clone-tabnews&quot;,
@@ -100,6 +110,10 @@
       <workItem from="1763517154662" duration="4700000" />
       <workItem from="1763682920169" duration="2854000" />
       <workItem from="1763685951456" duration="4278000" />
+      <workItem from="1763933356986" duration="230000" />
+      <workItem from="1763933599019" duration="1989000" />
+      <workItem from="1763982877016" duration="605000" />
+      <workItem from="1764019745064" duration="8063000" />
     </task>
     <task id="LOCAL-00001" summary="feat: implement session management with token generation and cookie handling">
       <option name="closed" value="true" />
