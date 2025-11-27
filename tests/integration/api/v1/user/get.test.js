@@ -54,6 +54,7 @@ describe("GET /api/v1/user", () => {
       expect(
         renewedSessionObject.expires_at > sessionObject.expires_at,
       ).toEqual(true);
+
       expect(
         renewedSessionObject.updated_at > sessionObject.updated_at,
       ).toEqual(true);

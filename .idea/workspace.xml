@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0fc83e4d-f434-41ef-b2de-36d98083780b" name="Changes" comment="feat: implement session management with token generation and cookie handling">
-      <change afterPath="$PROJECT_DIR$/pages/api/v1/user/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/integration/api/v1/user/get.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infra/controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/infra/controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/session.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/session.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/api/v1/sessions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/v1/sessions/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/orchestrator.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/orchestrator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/api/v1/user/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/v1/user/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/integration/api/v1/user/get.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/api/v1/user/get.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +21,31 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="user" />
+                    <option name="lastUsedInstant" value="1764204429" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="develop" />
+                    <option name="lastUsedInstant" value="1764204428" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -96,7 +115,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-c7e53b3be11b-JavaScript-WS-253.28294.86" />
+        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-WS-252.28238.10" />
       </set>
     </attachedChunks>
   </component>
@@ -114,6 +133,7 @@
       <workItem from="1763933599019" duration="1989000" />
       <workItem from="1763982877016" duration="605000" />
       <workItem from="1764019745064" duration="8063000" />
+      <workItem from="1764248974217" duration="162000" />
     </task>
     <task id="LOCAL-00001" summary="feat: implement session management with token generation and cookie handling">
       <option name="closed" value="true" />
