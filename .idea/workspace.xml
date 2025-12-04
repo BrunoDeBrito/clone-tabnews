@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0fc83e4d-f434-41ef-b2de-36d98083780b" name="Changes" comment="feat: add project configuration files and update workspace settings">
-      <change afterPath="$PROJECT_DIR$/tests/integration/api/v1/sessions/delete.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/api/v1/sessions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/v1/sessions/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +30,10 @@
             <RecentBranchesForRepo>
               <option name="branches">
                 <list>
+                  <RecentBranch>
+                    <option name="branchName" value="local-email" />
+                    <option name="lastUsedInstant" value="1764334198" />
+                  </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="delete-session" />
                     <option name="lastUsedInstant" value="1764275347" />
@@ -69,16 +73,19 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "delete-session",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "local-email",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
+    "junie.onboarding.icon.badge.shown": "true",
     "last_opened_file_path": "/home/debrito/Project/Course/clone-tabnews/tests/integration/api/v1/sessions",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "terminal",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "to.speed.mode.migration.done": "true",
     "ts.external.directory.path": "/var/home/debrito/.local/share/JetBrains/Toolbox/apps/webstorm/plugins/javascript-plugin/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   }
@@ -144,6 +151,8 @@
       <workItem from="1763982877016" duration="605000" />
       <workItem from="1764019745064" duration="8063000" />
       <workItem from="1764248974217" duration="162000" />
+      <workItem from="1764333070066" duration="1574000" />
+      <workItem from="1764341477085" duration="245000" />
     </task>
     <task id="LOCAL-00001" summary="feat: implement session management with token generation and cookie handling">
       <option name="closed" value="true" />
