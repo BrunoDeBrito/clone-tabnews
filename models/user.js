@@ -172,7 +172,6 @@ async function update(username, userInputValues) {
         userWithNewValues.password,
       ],
     });
-    console.log("🚀 ~ runUpdateQuery ~ results:", results);
 
     return results.rows[0];
   }
