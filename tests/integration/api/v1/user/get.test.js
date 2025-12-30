@@ -33,6 +33,8 @@ describe("GET /api/v1/user", () => {
 
       const responseBody = await response.json();
 
+      const activatedUser = await orchestrator.activationUser(createdUser);
+
       expect(responseBody).toEqual({
         id: createdUser.id,
         username: "UserWithValidSession",

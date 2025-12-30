@@ -10,6 +10,7 @@ import {
   ForbiddenErro,
 } from "infra/errors";
 import user from "models/user";
+import authorization from "models/authorization";
 
 function onNoMatchHandler(request, response) {
   const publicErrorObject = new MethodNotAllowedError();
@@ -23,7 +24,11 @@ function onErrorHandler(error, request, response) {
     error instanceof UnauthorizedError ||
     error instanceof ForbiddenErro
   ) {
-    if (error instanceof ValidationError || error instanceof NotFoundError) {
+    if (
+      error instanceof ValidationError ||
+      error instanceof NotFoundError ||
+      error instanceof ForbiddenErro
+    ) {
       return response.status(error.statusCode).json(error);
     }
 
@@ -85,7 +90,7 @@ async function injectAnonymousOrUser(request, response, next) {
 
 function injectAnonymousUser(request) {
   const anonymousUserObject = {
-    features: ["read:activation_token", /* "create:session", */ "create:user"],
+    features: ["read:activation_token", "create:session", "create:user"],
   };
 
   request.context = {
@@ -98,7 +103,7 @@ function canRequest(feature) {
   return function canRequestMiddleware(request, response, next) {
     const userTryingToRequest = request.context.user;
 
-    if (userTryingToRequest.features.includes(feature)) {
+    if (authorization.can(userTryingToRequest, feature)) {
       return next();
     }
 
